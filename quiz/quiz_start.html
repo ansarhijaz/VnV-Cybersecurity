@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Self-Assessment</title>
+    <link rel="stylesheet" href="style_quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+</head>
+<body data-theme="dark">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">CyberGuard</a>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../pricing.html">Pricing</a></li>
+                    <li><a href="../index.html#services">Services</a></li>
+                    <li><a href="../index.html#contact">Contact Us</a></li>
+                    <li>
+    <button id="theme-toggle-btn" class="theme-toggle">
+        <i class="fas fa-sun"></i>
+    </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+	
+    <main class="quiz-main">
+        
+        <section id="quiz-intro" class="quiz-section active">
+            <div class="intro-card">
+                <h1>Cybersecurity Self-Assessment</h1>
+                <p class="intro-text">Answer a few questions to get a snapshot of your organization's cybersecurity maturity. The results will help you identify key areas for improvement and guide your security roadmap.</p>
+                
+                <form id="contact-form" class="contact-form">
+    <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Work Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your work email" required>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+    </div>
+    <div class="form-group">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" placeholder="Enter your company name">
+    </div>
+    <div class="form-group">
+        <label for="role">Role</label>
+        <input type="text" id="role" name="role" placeholder="Enter your role">
+    </div>
+    <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" placeholder="Enter your country">
+    </div>
+    <div class="form-group checkbox-group">
+        <input type="checkbox" id="consent_privacy" name="consent_privacy" required>
+        <label for="consent_privacy">I consent to the processing of my data in accordance with the Privacy Policy.</label>
+    </div>
+    <div class="form-group checkbox-group">
+        <input type="checkbox" id="consent_marketing" name="consent_marketing">
+        <label for="consent_marketing">I consent to receive marketing communications and promotions.</label>
+    </div>
+    <button type="submit" class="cta-button">Start Assessment</button>
+</form>
+            </div>
+        </section>
+
+        <section id="quiz-container" class="quiz-section">
+            <div class="quiz-wrapper">
+                <div id="flashcard" class="flashcard">
+                    <div id="flashcard-inner" class="flashcard-inner">
+                        <div id="flashcard-content" class="flashcard-content">
+                            </div>
+                    </div>
+                </div>
+                <div class="quiz-navigation">
+                    <button id="prev-btn" class="nav-btn prev-btn" style="display: none;">Previous</button>
+                    <button id="next-btn" class="nav-btn next-btn" style="display: none;">Next</button>
+                    <button id="skip-btn" class="nav-btn skip-btn" style="display: none;">Skip</button>
+                    <button id="submit-btn" class="nav-btn submit-btn" style="display: none;">Submit</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz-results" class="quiz-section">
+            <div class="results-card">
+                <h2>Assessment Complete!</h2>
+                <p>Thank you for taking the time to complete the assessment. Here are your results.</p>
+                <div class="results-summary">
+                    <div class="result-box">
+                        <p class="result-label">Maturity Level</p>
+                        <h3 id="maturity-level"></h3>
+                    </div>
+                    <div class="result-box">
+                        <p class="result-label">Your Score</p>
+                        <h3 id="total-score"></h3>
+                    </div>
+                </div>
+                <p id="summary-text" class="summary-text"></p>
+                <div class="results-actions">
+                    <a id="results-cta" href="../pricing.html" class="cta-button">View our Services</a>
+                    <button id="copy-results-btn" class="cta-button secondary">Copy Results</button>
+					<a href="" class="cta-button secondary">Re-take quiz</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    
+    <div id="coming-soon-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3>Coming Soon</h3>
+            <p>The Advanced assessment is currently under development. Please check back later for more in-depth features.</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="../index.html">Home</a></li>			
+                <li><a href="../pricing.html">Pricing</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../index.html#contact">Contact Us</a></li>
+                <li><a href="../index.html#about">About Us</a></li>
+                <li><a href="../index.html#privacy">Privacy Policy</a></li>
+
+            </ul>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+            <p>&copy; <span id="year"></span> CyberGuard Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script_quiz.js"></script>
+
+</body>
+</html>

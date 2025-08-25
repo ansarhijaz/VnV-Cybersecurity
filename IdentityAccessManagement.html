@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Identity & Access Management - Comprehensive Guide</title>
+    <meta name="description" content="Explore the core principles and practices of Identity and Access Management (IAM), including IAAA, Least Privilege, and Segregation of Duties. A comprehensive guide for business and IT leaders." />
+    <meta name="keywords" content="Identity and Access Management, IAM, IAAA, Least Privilege, Segregation of Duties, Non-repudiation, Cybersecurity, IT Security" />
+    <meta property="og:title" content="Identity & Access Management - Comprehensive Guide" />
+    <meta property="og:description" content="Explore the core principles and practices of Identity and Access Management (IAM), including IAAA, Least Privilege, and Segregation of Duties. A comprehensive guide for business and IT leaders." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.yourwebsite.com/iam-guide" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="page-nav-container">
+        <a href="pricing.html" class="page-nav-button left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </a>
+        <a href="IdentityAccessManagement.html" class="page-nav-button right">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+    </div>
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">CyberGuard</a>
+                <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Pricing.html">Pricing</a></li>
+                <li><a href="#about">About IAM</a></li>
+                <li><a href="#concepts">Concepts</a></li>
+                    <li>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather light-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather dark-icon"><path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <section id="hero" class="hero fade-in">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Identity and Access Management (IAM)</h1>
+                    <p class="subtitle">The basic principles of IAM are - First, who are you? Then, prove it is you. Confirmed, here’s where you can go. We are tracking you.</p>
+                </div>
+                <div class="hero-principles">
+                    <ul>
+                        <li>IAAA - Identification, Authentication, Authorization, and Accountability</li>
+                        <li>Need-to-know</li>
+                        <li>Least privilege</li>
+                        <li>Segregation of duties</li>
+                        <li>Non-repudiation (cannot deny accountability)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="mid-cta" class="mid-cta fade-in">
+            <div class="container">
+                <a href="index.html#contact" class="mid-cta-link pulse">START YOUR CYBERSECURITY JOURNEY NOW</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title fade-in">The 5Ws of IAM</h2>
+                <div class="grid-5w">
+                    <div class="card-5w fade-in" data-delay="100">
+                        <h3>Why</h3>
+                        <p>"Everyone in your company should have access to the resources needed to do their job, but not more than what's required.</p>
+                        <ul>
+                            <li>A data breach can turn into crippling financial losses, reputational damage, and loss of customer trust.</li>
+                            <li>IAM processes create a fortress of security to manage your data and resources. It is an investment that helps build trust internally and with clients.</li>
+                            <li>Foundation of business efficiency and growth is dependent on IAM."</li>
+                        </ul>
+                    </div>
+                    <div class="card-5w fade-in" data-delay="200">
+                        <h3>What</h3>
+                        <p>"Your digital security guard.</p>
+                        <ul>
+                            <li>IAM processes manage identities, authentication techniques, user roles, and lifecycle.</li>
+                            <li>When unauthorized: prevent access; and when authorized: establish accountability, create groups, standardize processes, and perform periodic reviews."</li>
+                        </ul>
+                    </div>
+                    <div class="card-5w fade-in" data-delay="300">
+                        <h3>Who</h3>
+                        <p>"Every person, process, and application is included.</p>
+                        <ul>
+                            <li>Business owners and application owners set strategy and goals.</li>
+                            <li>Head of IT manages the program.</li>
+                            <li>IT Department implements the procedures."</li>
+                        </ul>
+                    </div>
+                    <div class="card-5w fade-in" data-delay="400">
+                        <h3>How</h3>
+                        <p>"Like how physical entry into your office requires certain security checks, so does digital-entry. Majority of processes can be automated to maximize efficiency & effectiveness.</p>
+                        <ul>
+                            <li>Business goals decide policy & procedures, which create a security blueprint - perfectly tailored to solve your unique business needs.</li>
+                            <li>Automation of processes streamlines access management. However, access reviews necessitate manual intervention.</li>
+                            <li>Training, monitoring, learning, refining, and reinforcement."</li>
+                        </ul>
+                    </div>
+                    <div class="card-5w fade-in" data-delay="500">
+                        <h3>When</h3>
+                        <p>"Digital entry & exit.</p>
+                        <ul>
+                            <li>From day 1 - implementing a strong IAM program builds trust, prevents losses, and supports growth.</li>
+                            <li>Especially important for systems with sensitive data like personal information of individuals, financial information, intellectual property, client data, etc.</li>
+                            <li>If your company experiences a security breach - external or internal."</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="summary-section fade-in">
+                    <p>Ultimately, a strong IAM program isn't just about securing the use of technology, it's about building an efficient ready-to-use machine that runs in the background while your business grows. We're here to help you take that crucial first step in the right direction.</p>
+                    <a href="index.html#contact" class="call-to-action">Get Started Today</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="concepts" id="concepts" data-accordion="multiple">
+            <div class="container">
+                <h2 class="section-title fade-in">Conceptual Knowledge Base</h2>
+                <div class="iam-toolbar" aria-label="Card controls">
+                    <input type="search" id="concept-search" class="iam-search" placeholder="Search for a concept" aria-label="Search concepts" />
+                    <div class="toolbar-actions">
+						<button id="expand-all" class="iam-action-btn">Expand All</button>
+                        <button id="collapse-all" class="iam-action-btn">Collapse All</button>
+                    </div>
+                </div>
+                <div class="concepts-layout">
+                    <nav class="concepts-nav">
+                        <h3 class="concepts-nav-title">On this page</h3>
+                        <ul>
+                            <li><a href="#concept-governance">Governance</a></li>
+                            <li><a href="#concept-administration">Administration</a></li>
+                            <li><a href="#concept-authorizations">Authorizations</a></li>
+                            <li><a href="#concept-authentication">Authentication</a></li>
+                            <li><a href="#concept-pam">PAM</a></li>
+                            <li><a href="#concept-central-iam">Centralized IAM</a></li>
+                        </ul>
+                    </nav>
+                    <div class="concepts-main">
+                        <div class="iam-cards" id="concept-governance">
+                            <div class="iam-card fade-in">
+                                <button class="iam-card-header" type="button" aria-expanded="false" aria-controls="content-governance">
+                                    <span class="title"><img class="icon" src="assets/icons/shield.svg" alt=""/> Governance of Identity and Access Management Program</span>
+                                    <span class="chev" aria-hidden="true">▾</span>
+                                </button>
+                                <div id="content-governance" class="iam-card-content" aria-hidden="true">
+                                   <div class="iam-panel">
+                                        <!-- New tabbed interface -->
+                                        <div class="tabs">
+                                            <div class="tab-buttons">
+                                                <button class="tab-btn active" data-tab="tab-definition-governance">Definition</button>
+                                                <button class="tab-btn" data-tab="tab-implementation-governance">Implementation</button>
+                                                <button class="tab-btn" data-tab="tab-automation-governance">Automation & Applications</button>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div id="tab-definition-governance" class="tab-panel active">
+                                                    <p>Framework for managing digital identities and access privileges across an organization. IAM Governance is a continuous cycle of reviewing and improving IAM policies and procedures.</p>
+                                                    <h3>Examples</h3>
+                                                    <p>An example of a good IAM governance program includes a well-defined process to grant and revoke access as part of a joiner-mover-leaver process.</p>
+                                                </div>
+                                                <div id="tab-implementation-governance" class="tab-panel">
+                                                    <h3>Implementation Strategy</h3>
+                                                    <p>A successful IAM governance program requires a well-defined IAM policy and procedures to ensure access is granted in alignment with the principle of least privilege.</p>
+                                                    <h3>Implementation Steps</h3>
+                                                    <ol>
+                                                        <li>Define IAM Policy.</li>
+                                                        <li>Define roles and responsibilities.</li>
+                                                        <li>Establish review and audit processes.</li>
+                                                        <li>Communicate policies and procedures.</li>
+                                                        <li>Implement a governance framework.</li>
+                                                    </ol>
+                                                </div>
+                                                <div id="tab-automation-governance" class="tab-panel">
+                                                    <h3>Automation & Applications</h3>
+                                                    <p>Automate periodic access review cycles and generate reports.</p>
+                                                    <h3>Application for Consideration</h3>
+                                                    <p>SailPoint IdentityIQ/IdentityNow, OneIdentity, Saviynt, Okta Identity Governance.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iam-cards" id="concept-administration">
+                            <div class="iam-card fade-in">
+                                <button class="iam-card-header" type="button" aria-expanded="false" aria-controls="content-administration">
+                                    <span class="title"><img class="icon" src="assets/icons/lock.svg" alt=""/> Administration of Identity and Access</span>
+                                    <span class="chev" aria-hidden="true">▾</span>
+                                </button>
+                                <div id="content-administration" class="iam-card-content" aria-hidden="true">
+                                    <div class="iam-panel">
+                                       <!-- New tabbed interface -->
+                                        <div class="tabs">
+                                            <div class="tab-buttons">
+                                                <button class="tab-btn active" data-tab="tab-definition-administration">Definition</button>
+                                                <button class="tab-btn" data-tab="tab-implementation-administration">Implementation</button>
+                                                <button class="tab-btn" data-tab="tab-automation-administration">Automation & Applications</button>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div id="tab-definition-administration" class="tab-panel active">
+
+                                                    <p>The daily management of user accounts and permissions, including user provisioning, deprovisioning, password resets, and access modifications.</p>
+                                                    <h3>Examples</h3>
+                                                    <p>Onboarding a new employee and providing them with necessary access to the company's network and applications.</p>
+                                                </div>
+                                                <div id="tab-implementation-administration" class="tab-panel">
+                                                    <h3>Implementation Strategy</h3>
+                                                    <p>Establish a centralized system (e.g., Active Directory, LDAP) to manage user identities and access. Implement an access request and approval workflow.</p>
+                                                    <h3>Implementation Steps</h3>
+                                                    <ol>
+                                                        <li>Centralize identity management.</li>
+                                                        <li>Define user roles and permissions.</li>
+                                                        <li>Automate the joiner-mover-leaver process.</li>
+                                                        <li>Implement access review workflows.</li>
+                                                        <li>Establish a robust password management policy.</li>
+                                                    </ol>
+                                                </div>
+                                                <div id="tab-automation-administration" class="tab-panel">
+                                                    <h3>Automation & Applications</h3>
+                                                    <p>Automate user provisioning and deprovisioning based on HR system events. Integrate with an IAM solution for centralized management.</p>
+                                                    <h3>Application for Consideration</h3>
+                                                    <p>Microsoft Entra ID, Okta, Ping Identity, Active Directory.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iam-cards" id="concept-authorizations">
+                            <div class="iam-card fade-in">
+                                <button class="iam-card-header" type="button" aria-expanded="false" aria-controls="content-authorizations">
+                                    <span class="title"><img class="icon" src="assets/icons/eye.svg" alt=""/> Management of User Authorizations</span>
+                                    <span class="chev" aria-hidden="true">▾</span>
+                                </button>
+                                <div id="content-authorizations" class="iam-card-content" aria-hidden="true">
+                                    <div class="iam-panel">
+									 <!-- New tabbed interface -->
+                                        <div class="tabs">
+                                            <div class="tab-buttons">
+                                                <button class="tab-btn active" data-tab="tab-definition-authorizations">Definition</button>
+                                                <button class="tab-btn" data-tab="tab-implementation-authorizations">Implementation</button>
+                                                <button class="tab-btn" data-tab="tab-automation-authorizations">Automation & Applications</button>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div id="tab-definition-authorizations" class="tab-panel active">
+                                                    
+                                                    <p>The process of determining what a user is permitted to do once they have been authenticated. It is based on policies and rules that define access to resources (e.g., files, databases, applications).</p>
+                                                    <h3>Examples</h3>
+                                                    <p>A marketing manager having read-write access to the marketing folder, while an intern only has read access.</p>
+                                                </div>
+                                                <div id="tab-implementation-authorizations" class="tab-panel">
+                                                    <h3>Implementation Strategy</h3>
+                                                    <p>Implement access control models such as Role-Based Access Control (RBAC), Attribute-Based Access Control (ABAC), or a hybrid approach. This ensures permissions are granted based on the user's role, attributes, or context.</p>
+                                                    <h3>Implementation Steps</h3>
+                                                    <ol>
+                                                        <li>Define access control policies.</li>
+                                                        <li>Implement RBAC/ABAC models.</li>
+                                                        <li>Conduct regular access reviews.</li>
+                                                        <li>Use a centralized access control system.</li>
+                                                        <li>Ensure segregation of duties (SoD).</li>
+                                                    </ol>
+                                                </div>
+                                                <div id="tab-automation-authorizations" class="tab-panel">
+                                                    <h3>Automation & Applications</h3>
+                                                    <p>Automate access requests and approval workflows. Use a policy engine to enforce access control rules in real-time.</p>
+                                                    <h3>Application for Consideration</h3>
+                                                    <p>Okta, Ping Identity, Microsoft Entra ID, Saviynt.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iam-cards" id="concept-authentication">
+                            <div class="iam-card fade-in">
+                                <button class="iam-card-header" type="button" aria-expanded="false" aria-controls="content-authentication">
+                                    <span class="title"><img class="icon" src="assets/icons/shield.svg" alt=""/> Management of User Authentication</span>
+                                    <span class="chev" aria-hidden="true">▾</span>
+                                </button>
+                                <div id="content-authentication" class="iam-card-content" aria-hidden="true">
+                                    <div class="iam-panel">
+									 <!-- New tabbed interface -->
+                                        <div class="tabs">
+                                            <div class="tab-buttons">
+                                                <button class="tab-btn active" data-tab="tab-definition-authentication">Definition</button>
+                                                <button class="tab-btn" data-tab="tab-implementation-authentication">Implementation</button>
+                                                <button class="tab-btn" data-tab="tab-automation-authentication">Automation & Applications</button>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div id="tab-definition-authentication" class="tab-panel active">
+                                                    
+                                                    <p>The process of verifying a user's identity. This is the act of proving that a user is who they claim to be.</p>
+                                                    <h3>Examples</h3>
+                                                    <p>Entering a password, using a fingerprint (biometrics), or a one-time code from a mobile app (Multi-Factor Authentication).</p>
+                                                </div>
+                                                <div id="tab-implementation-authentication" class="tab-panel">
+                                                    <h3>Implementation Strategy</h3>
+                                                    <p>Deploy strong authentication methods, such as Multi-Factor Authentication (MFA), to add layers of security beyond just a password.</p>
+                                                    <h3>Implementation Steps</h3>
+                                                    <ol>
+                                                        <li>Enforce strong password policies.</li>
+                                                        <li>Implement MFA for all users.</li>
+                                                        <li>Consider passwordless authentication methods (e.g., biometrics, FIDO2).</li>
+                                                        <li>Use a centralized authentication service.</li>
+                                                        <li>Educate users on phishing and social engineering.</li>
+                                                    </ol>
+                                                </div>
+                                                <div id="tab-automation-authentication" class="tab-panel">
+                                                    <h3>Automation & Applications</h3>
+                                                    <p>Use a Single Sign-On (SSO) solution to streamline user logins. Automate temporary access for contractors or partners. Use a centralized MFA solution.</p>
+                                                    <h3>Application for Consideration</h3>
+                                                    <p>Okta, Duo Security, Ping Identity, Microsoft Entra ID.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iam-cards" id="concept-pam">
+                            <div class="iam-card fade-in">
+                                <button class="iam-card-header" type="button" aria-expanded="false" aria-controls="content-pam">
+                                    <span class="title"><img class="icon" src="assets/icons/eye.svg" alt=""/> Privileged Access Management (PAM); Non-Standard User Management</span>
+                                    <span class="chev" aria-hidden="true">▾</span>
+                                </button>
+                                <div id="content-pam" class="iam-card-content" aria-hidden="true">
+                                    <div class="iam-panel">
+									    <!-- New tabbed interface -->
+                                        <div class="tabs">
+                                            <div class="tab-buttons">
+                                                <button class="tab-btn active" data-tab="tab-definition-pam">Definition</button>
+                                                <button class="tab-btn" data-tab="tab-implementation-pam">Implementation</button>
+                                                <button class="tab-btn" data-tab="tab-automation-pam">Automation & Applications</button>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div id="tab-definition-pam" class="tab-panel active">
+                                                    
+                                                    <p>A cybersecurity strategy to control and monitor privileged access within an organization's IT environment. It is focused on accounts with elevated permissions (e.g., system administrators, root users).</p>
+                                                    <h3>Examples</h3>
+                                                    <p>Requiring an admin to check out a privileged password from a secure vault to perform a task, and then checking it back in after use.</p>
+                                                </div>
+                                                <div id="tab-implementation-pam" class="tab-panel">
+                                                    <h3>Implementation Strategy</h3>
+                                                    <p>Establish a centralized vault for privileged accounts. Implement session monitoring and a "just-in-time" access model to grant temporary privileged access only when needed.</p>
+                                                    <h3>Implementation Steps</h3>
+                                                    <ol>
+                                                        <li>Discover and vault privileged accounts.</li>
+                                                        <li>Implement session monitoring.</li>
+                                                        <li>Enforce least privilege for all privileged accounts.</li>
+                                                        <li>Implement "just-in-time" access.</li>
+                                                        <li>Conduct regular audits of privileged activity.</li>
+                                                    </ol>
+                                                </div>
+                                                <div id="tab-automation-pam" class="tab-panel">
+                                                    <h3>Automation & Applications</h3>
+                                                    <p>Automate privileged password rotation. Automatically revoke privileged access after a session ends. Integrate with SIEM tools for real-time monitoring.</p>
+                                                    <h3>Application for Consideration</h3>
+                                                    <p>CyberArk, BeyondTrust, Thycotic, Delinea.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iam-cards" id="concept-central-iam">
+                            <div class="iam-card fade-in">
+                                <button class="iam-card-header" type="button" aria-expanded="false" aria-controls="content-central-iam">
+                                    <span class="title"><img class="icon" src="assets/icons/eye.svg" alt=""/> Administration of a Centralized IAM Solution</span>
+                                    <span class="chev" aria-hidden="true">▾</span>
+                                </button>
+                                <div id="content-central-iam" class="iam-card-content" aria-hidden="true">
+                                    <div class="iam-panel">
+									<!-- New tabbed interface -->
+                                        <div class="tabs">
+                                            <div class="tab-buttons">
+                                                <button class="tab-btn active" data-tab="tab-definition-central-iam">Definition</button>
+                                                <button class="tab-btn" data-tab="tab-implementation-central-iam">Implementation</button>
+                                                <button class="tab-btn" data-tab="tab-automation-central-iam">Automation & Applications</button>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div id="tab-definition-central-iam" class="tab-panel active">
+                                                    
+                                                    <p>A unified approach to managing identities and access across an organization's entire IT landscape, rather than using separate, siloed systems. It provides a single source of truth for user data and permissions.</p>
+                                                    <h3>Examples</h3>
+                                                    <p>Using a single sign-on (SSO) solution to log in to all corporate applications with one set of credentials.</p>
+                                                </div>
+                                                <div id="tab-implementation-central-iam" class="tab-panel">
+                                                    <h3>Implementation Strategy</h3>
+                                                    <p>Migrate from disparate systems to a single, authoritative identity store. Integrate applications with the central IAM system using protocols like SAML or OAuth. Develop a clear migration plan.</p>
+                                                    <h3>Implementation Steps</h3>
+                                                    <ol>
+                                                        <li>Inventory all identities and applications.</li>
+                                                        <li>Select a centralized IAM solution.</li>
+                                                        <li>Integrate key applications.</li>
+                                                        <li>Establish a phased migration plan.</li>
+                                                        <li>Train users and administrators.</li>
+                                                    </ol>
+                                                </div>
+                                                <div id="tab-automation-central-iam" class="tab-panel">
+                                                    <h3>Automation & Applications</h3>
+                                                    <p>Automate user provisioning and access management across multiple applications. Implement automated access reviews and reporting from a single console.</p>
+                                                    <h3>Application for Consideration</h3>
+                                                    <p>Microsoft Entra ID, Okta, Ping Identity, ForgeRock.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> CyberGuard Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+    <button id="back-to-top" class="back-to-top" title="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    </button>
+    <script src="script.js"></script>
+</body>
+</html>
