@@ -264,3 +264,66 @@ document.querySelectorAll('.page-nav-button').forEach(button => {
         }, { once: true });
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButtons = document.querySelectorAll('.toggle-features');
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // Find the parent card body
+            const cardBody = button.closest('.card-body');
+            // Select all hidden features within that card body
+            const features = cardBody.querySelectorAll('.feature-hidden');
+
+            // Toggle visibility for each hidden feature and the button text
+            const isExpanded = button.classList.contains('is-expanded');
+
+            features.forEach(feature => {
+                // Toggle the 'is-expanded' class, which CSS uses to set display: list-item
+                feature.classList.toggle('is-expanded');
+            });
+
+            // Update the button text and class
+            if (isExpanded) {
+                button.innerHTML = '+ Add-on services*';
+                button.classList.remove('is-expanded');
+            } else {
+                button.innerHTML = '– Add-on services*';
+                button.classList.add('is-expanded');
+            }
+        });
+    });
+
+});
+
+// New Feature Elaboration Toggle functionality (non-intrusive details)
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.feature-has-detail').forEach(listItem => {
+        // Elements to interact with
+        const mainLine = listItem.querySelector('.feature-main-line');
+        const toggleIcon = listItem.querySelector('.detail-toggle-icon');
+        const elaboration = listItem.querySelector('.feature-elaboration');
+
+        // Add click event listener to the main line to toggle the detail
+        if (mainLine) {
+            mainLine.addEventListener('click', (e) => {
+                // Prevent default action and stop propagation if nested in complex elements
+                e.preventDefault();
+                e.stopPropagation();
+
+                const isExpanded = toggleIcon.getAttribute('aria-expanded') === 'true';
+                
+                // Toggle the classes and attributes
+                if (isExpanded) {
+                    elaboration.classList.add('is-hidden');
+                    toggleIcon.setAttribute('aria-expanded', 'false');
+                } else {
+                    elaboration.classList.remove('is-hidden');
+                    toggleIcon.setAttribute('aria-expanded', 'true');
+                }
+            });
+        }
+    });
+});

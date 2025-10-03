@@ -1,13 +1,18 @@
 /* ======================= Base & Variables ======================= */
 :root {
     /* Dark Theme */
-    --bg-color: #121212;
-    --card-bg: #1e1e1e;
-    --text-color: #e0e0e0;
-    --muted-text: #a0a0a0;
-    --border-color: #333;
-    --brand-color: #007bff;
-    --brand-dark: #0056b3;
+    --brand-color: #338DFF;
+    --brand-dark: #0070F3;
+    --accent-color: #ff6f00;
+    /* --accent-color: #BE99FF; bright purple */
+    
+    /* Neutral Colors */
+    --bg-color: #0B132B;
+    --card-bg: #17213C;
+    --text-color: #F0F4F8;
+    --muted-text: #A0AEC0;
+    --border-color: #2C3A57;
+
     --cta-color: #28a745;
     --cta-hover: #218838;
     --shadow-color: rgba(0, 0, 0, 0.4);
@@ -66,13 +71,24 @@
 
 body.light-theme {
     /* Light Theme */
-    --bg-color: #f0f2f5;
-    --card-bg: #ffffff;
-    --text-color: #333333;
-    --muted-text: #666666;
-    --border-color: #dddddd;
-    --brand-color: #0056b3;
-    --brand-dark: #003d80;
+   --brand-color: #0070F3;
+    --brand-dark: #0059C2;
+    --accent-color: #e74c3c;
+	/*--accent-color: #A065F7; /* creative and energetic purple */
+
+    /* Neutral Colors */
+    --bg-color: #F7F9FC;
+    --card-bg: #FFFFFF;
+    --text-color: #1A202C;
+    --muted-text: #5A6474;
+    --border-color: #E2E8F0;
+
+    /* UI & Effects */
+    --hero-bg: linear-gradient(135deg, #E6F1FF, #F3EBFF);
+    --shadow-light: rgba(26, 32, 44, 0.05);
+    --shadow-medium: rgba(26, 32, 44, 0.1);
+    --shadow-strong: rgba(26, 32, 44, 0.15);
+
     --cta-color: #28a745;
     --cta-hover: #218838;
     --shadow-color: rgba(0, 0, 0, 0.1);
@@ -86,7 +102,6 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     transition: background-color 0.3s, color 0.3s;
-    /* FIX: changed from flexbox to block-level to ensure vertical stacking */
     display: block; 
 }
 
@@ -232,7 +247,7 @@ body.light-theme .theme-toggle .fa-moon {
     position: relative;
     width: 100%;
     max-width: 700px;
-    min-height: 600px; /* Increased from 400px */
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -243,14 +258,14 @@ body.light-theme .theme-toggle .fa-moon {
     perspective: 1000px;
     width: 100%;
     height: 100%;
-    min-height: 600px; /* Increased from 400px */
+    min-height: 600px;
 }
 
 .flashcard-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 600px; /* Increased from 400px */
+    min-height: 600px;
     text-align: center;
     transition: var(--flashcard-transition);
     transform-style: preserve-3d;
@@ -271,9 +286,9 @@ body.light-theme .theme-toggle .fa-moon {
 
 .flashcard-content {
     width: 100%;
-    max-height: 500px; /* Increased from 300px */
+    max-height: 500px;
     overflow-y: auto;
-    overflow-x: auto; /* Added horizontal scrolling */
+    overflow-x: auto;
     padding-right: 15px;
 }
 
@@ -368,7 +383,7 @@ body.light-theme .theme-toggle .fa-moon {
 
 .cta-button {
     padding: 15px 30px;
-    background-color: var(--brand-color);
+    background-color: var(--accent-color);
     color: #fff;
     text-decoration: none;
     border: none;
@@ -459,7 +474,6 @@ body.light-theme .theme-toggle .fa-moon {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn 0.3s;
 }
 
 .modal-content {
@@ -489,10 +503,6 @@ body.light-theme .theme-toggle .fa-moon {
 }
 
 /* ======================= Animations ======================= */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
 
 @keyframes pop-up {
     from { transform: scale(0.9) translateY(20px); opacity: 0; }
