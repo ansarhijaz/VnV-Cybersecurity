@@ -490,6 +490,23 @@ modalCloseBtn.addEventListener('click', () => {
     comingSoonModal.style.display = 'none';
 });
 
+    // --- Hamburger Menu ---
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+    }
+
 // Current year in footer
 const yearEl = document.getElementById('year');
 if (yearEl) {
@@ -503,8 +520,12 @@ copyResultsBtn.addEventListener('click', () => {
     const textToCopy = `Cybersecurity Self-Assessment Results:\n\nYour Maturity Level: ${maturity}\nYour Score: ${score} points\n\nSummary: ${message}\n\nFind your own cybersecurity maturity at: YOUR_WEBSITE_URL_HERE`;
 
     navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('Results copied to clipboard!');
+        const originalText = copyResultsBtn.textContent;
+        copyResultsBtn.textContent = 'Copied!';
+        setTimeout(() => {
+            copyResultsBtn.textContent = originalText;
+        }, 2000);
     }).catch(err => {
-        console.error('Failed to copy text: ', err);
+        console.error('Failed to copy results: ', err);
     });
 });

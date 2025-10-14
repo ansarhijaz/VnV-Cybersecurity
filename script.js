@@ -1,12 +1,32 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+    // --- Smooth Scrolling for Anchor Links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
-});
+
+    // --- Hamburger Menu ---
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+    }
 
 // Current year in footer
 const yearEl = document.getElementById('year');
@@ -208,9 +228,8 @@ function getTipOfTheDay() {
 
 // Function to update the displayed counts
 function updateReactionCounts() {
-    const reactions = JSON.parse(localStorage.getItem('tipReactions')) || { like: 0, dislike: 0 };
+    const reactions = JSON.parse(localStorage.getItem('tipReactions')) || { like: 0 };
     document.querySelector('[data-reaction="like"]').innerHTML = `<i class="fas fa-thumbs-up"></i> <span class="reaction-count">${reactions.like}</span>`;
-    document.querySelector('[data-reaction="dislike"]').innerHTML = `<i class="fas fa-thumbs-down"></i> <span class="reaction-count">${reactions.dislike}</span>`;
 }
 
 
@@ -287,10 +306,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update the button text and class
             if (isExpanded) {
-                button.innerHTML = '+ Add-on services*';
+                button.innerHTML = '+ Add-ons*';
                 button.classList.remove('is-expanded');
             } else {
-                button.innerHTML = '– Add-on services*';
+                button.innerHTML = '– Add-ons*';
                 button.classList.add('is-expanded');
             }
         });

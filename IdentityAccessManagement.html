@@ -27,25 +27,32 @@
         </a>
     </div>
 
+
     <header class="site-header">
         <div class="container">
             <nav class="nav">
                 <a href="index.html" class="logo">VnV Cybersecurity</a>
                 <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="quiz/quiz_start.html">Free Assessment</a></li>
-                <li><a href="#about">About IAM</a></li>
-                <li><a href="#concepts">Concepts</a></li>
-                    <li>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
+
+                    <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li><a class="nav-link" href="quiz/quiz_start.html">Free Assessment</a></li>
+                    <li><a class="nav-link" href="#about">IAM Intro</a></li>
+                    <li><a class="nav-link" href="#concepts">IAM Concepts</a></li>
+                </ul>
+            <div class="nav-right">
+				<button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather light-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather dark-icon"><path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
-                    </li>
-                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
             </nav>
-        </div>
+       </div>
     </header>
 
 
@@ -134,7 +141,8 @@
             <div class="container">
                 <h2 class="section-title">Conceptual Knowledge Base</h2>
                 <div class="iam-toolbar" aria-label="Card controls">
-                    <input type="search" id="concept-search" class="iam-search" placeholder="Search for a concept" aria-label="Search concepts" />
+<!--                    <input type="search" id="concept-search" class="iam-search" placeholder="Search for a concept" aria-label="Search concepts" /> 
+-->
                     <div class="toolbar-actions">
 						<button id="expand-all" class="iam-action-btn">Expand All</button>
                         <button id="collapse-all" class="iam-action-btn">Collapse All</button>
@@ -142,11 +150,11 @@
                 </div>
                 <div class="concepts-layout">
                     <nav class="concepts-nav">
-                        <h3 class="concepts-nav-title">On this page</h3>
+                        <h3 class="concepts-nav-title">Sections</h3>
                         <ul>
                             <li><a href="#concept-governance">Governance</a></li>
                             <li><a href="#concept-administration">Administration</a></li>
-                            <li><a href="#concept-authorizations">Authorizations</a></li>
+                            <li><a href="#concept-authorizations">Authorization</a></li>
                             <li><a href="#concept-authentication">Authentication</a></li>
                             <li><a href="#concept-pam">PAM</a></li>
                             <li><a href="#concept-central-iam">Centralized IAM</a></li>
@@ -161,7 +169,6 @@
                                 </button>
                                 <div id="content-governance" class="iam-card-content" aria-hidden="true">
                                    <div class="iam-panel">
-                                        <!-- New tabbed interface -->
                                         <div class="tabs">
                                             <div class="tab-buttons">
                                                 <button class="tab-btn active" data-tab="tab-definition-governance">Definition</button>
@@ -206,7 +213,6 @@
                                 </button>
                                 <div id="content-administration" class="iam-card-content" aria-hidden="true">
                                     <div class="iam-panel">
-                                       <!-- New tabbed interface -->
                                         <div class="tabs">
                                             <div class="tab-buttons">
                                                 <button class="tab-btn active" data-tab="tab-definition-administration">Definition</button>
@@ -252,7 +258,6 @@
                                 </button>
                                 <div id="content-authorizations" class="iam-card-content" aria-hidden="true">
                                     <div class="iam-panel">
-									 <!-- New tabbed interface -->
                                         <div class="tabs">
                                             <div class="tab-buttons">
                                                 <button class="tab-btn active" data-tab="tab-definition-authorizations">Definition</button>
@@ -298,7 +303,6 @@
                                 </button>
                                 <div id="content-authentication" class="iam-card-content" aria-hidden="true">
                                     <div class="iam-panel">
-									 <!-- New tabbed interface -->
                                         <div class="tabs">
                                             <div class="tab-buttons">
                                                 <button class="tab-btn active" data-tab="tab-definition-authentication">Definition</button>
@@ -339,12 +343,11 @@
                         <div class="iam-cards" id="concept-pam">
                             <div class="iam-card">
                                 <button class="iam-card-header" type="button" aria-expanded="false" aria-controls="content-pam">
-                                    <span class="title"><img class="icon" src="assets/icons/eye.svg" alt=""/> Privileged Access Management (PAM); Non-Standard User Management</span>
+                                    <span class="title"><img class="icon" src="assets/icons/eye.svg" alt=""/> Privileged Access Management (PAM) and Non-Standard User Management</span>
                                     <span class="chev" aria-hidden="true">▾</span>
                                 </button>
                                 <div id="content-pam" class="iam-card-content" aria-hidden="true">
                                     <div class="iam-panel">
-									    <!-- New tabbed interface -->
                                         <div class="tabs">
                                             <div class="tab-buttons">
                                                 <button class="tab-btn active" data-tab="tab-definition-pam">Definition</button>
@@ -390,7 +393,6 @@
                                 </button>
                                 <div id="content-central-iam" class="iam-card-content" aria-hidden="true">
                                     <div class="iam-panel">
-									<!-- New tabbed interface -->
                                         <div class="tabs">
                                             <div class="tab-buttons">
                                                 <button class="tab-btn active" data-tab="tab-definition-central-iam">Definition</button>
@@ -434,11 +436,12 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; <span id="year"></span> VnV Cybersecurity. All rights reserved.</p>
+    <footer class="site-footer-bottom">
+		<div class="footer-copy">
+        <p>&copy; <span id="year"></span> VnV Cybersecurity. All rights reserved.</p>
         </div>
     </footer>
+	
     <button id="back-to-top" class="back-to-top" title="Back to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
     </button>

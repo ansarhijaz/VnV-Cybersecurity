@@ -17,23 +17,29 @@
 
     <header class="site-header">
         <div class="container">
-            <nav class="nav">
-                <a href="#hero" class="logo">VnV Cybersecurity</a>
+
+			<nav class="nav">
+            <a href="#hero" class="logo">VnV Cybersecurity</a>
                 <ul class="nav-menu">
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="quiz/quiz_start.html">Free Assessment</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#expertise">Our Expertise</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
+                    <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li><a class="nav-link" href="quiz/quiz_start.html">Free Assessment</a></li>
+                    <li><a class="nav-link" href="#about">About Us</a></li>
+                    <li><a class="nav-link" href="#expertise">Our Expertise</a></li>
+                    <li><a class="nav-link" href="#contact">Contact Us</a></li>
+                </ul>
+            <div class="nav-right">
+				<button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather light-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather dark-icon"><path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
-                    </li>
-                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
             </nav>
-        </div>
+       </div>
     </header>
 
     <main>
@@ -41,9 +47,9 @@
             <div class="container hero-content">
                 <h1>Shielding Your Digital Frontier</h1>
                 <p class="subtitle">
-                    In a world of evolving threats, your business needs more than a vendor—it needs a partner. VnV Cybersecurity is the ally for small and medium businesses, providing proactive and intelligent cybersecurity solutions to protect what matters most.
+                    We are your trusted partner, not just a vendor. Protecting your small or medium business from modern cyber threats.
                 </p>
-                <a href="pricing.html" class="call-to-action">Explore Our Services</a>
+                <a href="pricing.html" class="call-to-action">Explore Our Plans</a>
             </div>
         </section>
 
@@ -232,25 +238,20 @@
     </main>
 
 
-    <footer class="site-footer">
-        <div class="container">
-            <ul class="footer-links">
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="#expertise">Our Domain Expertise</a></li>
-                <li><a href="quiz/quiz_start.html">Free Assessment</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
 
-            </ul>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+    <footer class="site-footer-bottom">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#" class="social-links"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-links"><i class="fab fa-twitter"></i></a>
+				<a href="#">Privacy Policy</a>
             </div>
-            <p>&copy; <span id="year"></span> VnV Cybersecurity. All rights reserved.</p>
+		<div class="footer-copy">
+        <p>&copy; <span id="year"></span> VnV Cybersecurity. All rights reserved.</p>
         </div>
     </footer>
+
+
  <button id="back-to-top" class="back-to-top" title="Back to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
     </button>
@@ -270,7 +271,6 @@
         </p>
         <div class="tip-actions">
             <button class="tip-reaction" data-reaction="like"><i class="fas fa-thumbs-up"></i></button>
-            <button class="tip-reaction" data-reaction="dislike"><i class="fas fa-thumbs-down"></i></button>
         </div>
     </div>
 </div>	

@@ -27,20 +27,27 @@
             <nav class="nav">
                 <a href="index.html" class="logo">VnV Cybersecurity</a>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-	                <li><a href="quiz/quiz_start.html">Free Assessment</a></li>
-                    <li><a href="#plans">Plans</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li>
-                                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
+
+                    <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="quiz/quiz_start.html">Free Assessment</a></li>
+                    <li><a class="nav-link" href="#plans">Plan</a></li>
+                    <li><a class="nav-link" href="#services">Services</a></li>
+                </ul>
+            <div class="nav-right">
+				<button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather light-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather dark-icon"><path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
-                    </li>
-                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
             </nav>
-        </div>
+       </div>
     </header>
+
 
     <main>
         <section class="hero">
@@ -76,6 +83,7 @@
 									<div class="feature-elaboration is-hidden">
 										<ul>
 											<li>Review and implement security good practices for your existing technology investments for access management, network devices, VPN, firewall, servers, endpoints, etc.</li>
+											<li>Apply hardening configurations to your organization's technology assets to strengthen your security posture</li>
 										</ul>
 									</div>
 								</li>
@@ -86,10 +94,10 @@
                                 <li class="feature feature-hidden">Two-day IT security awareness workshop for all employees</li>
                                 <li class="feature feature-hidden">Specialized role-based training for IT resources</li>
                             </ul>
-                            <a href="#" class="toggle-features">+ Add-on services*</a>
+                            <a href="#" class="toggle-features">+ Add-ons*</a>
                         </div>
                         <div class="card-footer">
-                            <span class="price">₹ 20,000</span>
+                            <span class="price">₹ 25,000</span>
 
                         </div>
                     </div>
@@ -137,7 +145,7 @@
                                 <li class="feature feature-hidden">Two-day IT security awareness workshop for all employees</li>
                                 <li class="feature feature-hidden">Specialized role-based training for IT resources</li>
                             </ul>
-                            <a href="#" class="toggle-features">+ Add-on services*</a>
+                            <a href="#" class="toggle-features">+ Add-ons*</a>
                         </div>
                         <div class="card-footer">
                             <span class="price">₹ 50,000</span>
@@ -153,7 +161,19 @@
                             <ul class="feature-list">
                                 <li class="feature feature-visible"><strong> Quick win </strong> services</li>
                                 <li class="feature feature-visible"><strong> IT Assurance </strong> services</li>
-                                <li class="feature feature-visible">Implement industry-standard IT security controls to remediate gaps</li>								
+								<li class="feature feature-has-detail">
+									<div class="feature-main-line">
+										Implement industry-standard IT security controls to remediate gaps
+										<span class="detail-toggle-icon" aria-expanded="false" role="button" tabindex="0">
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+										</span>
+									</div>
+									<div class="feature-elaboration is-hidden">
+										<ul>
+											<li>Apply controls commensurate to your business needs after performing a cost-benefit analysis</li>
+										</ul>
+									</div>
+								</li>
                                 <li class="feature feature-visible">Follow-up assessment after 4 months</li>
                                 <li class="feature feature-hidden">Develop dashboards & metrics to track control performance</li>
                                 <li class="feature feature-hidden">Automate IT processes with/ without applications</li>
@@ -162,10 +182,10 @@
                                 <li class="feature feature-hidden">Regulatory & Compliance Support</li>
                                 <li class="feature feature-hidden">Third-Party Risk Management</li>
                             </ul>
-                            <a href="#" class="toggle-features">+ Add-on services*</a>
+                            <a href="#" class="toggle-features">+ Add-ons*</a>
                         </div>
                         <div class="card-footer">
-                            <span class="price">₹ 80,000</span>
+                            <span class="price">₹ 90,000</span>
                         </div>
                     </div>
 
@@ -210,6 +230,8 @@
                 <div class="pillar">
                     <div class="pillar-header">Govern</div>
                     <div class="service-area-grid">
+						<div class="deliverables-list">
+
                         <div class="service-area">
                             <div class="service-title">Cybersecurity Strategy</div>
                             <div class="deliverable">
@@ -240,7 +262,7 @@
                                 <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Policies Icon">
                                 <div class="deliverable-text">
                                     <h4>Information Security Policies - Develop/ Review</h4>
-                                    <p>Draft/ Review & update cybersecurity policies specfic to your business needs based on industry best practices.<br><strong>Pricing:</strong> Base price: ₹ 2,000 / policy | Package cost: ₹ 25,000 / 20 policies</p>
+                                    <p>Draft/ Review & update cybersecurity policies specific to your business needs based on industry best practices.<br><strong>Pricing:</strong> Base price: ₹ 2,000 / policy | Package cost: ₹ 25,000 / 20 policies</p>
                                 </div>
                             </div>
                             <div class="deliverable">
@@ -301,10 +323,12 @@
                         </div>
                     </div>
                 </div>
+			</div>	
 
                 <div class="pillar">
                     <div class="pillar-header">Implement</div>
                     <div class="service-area-grid">
+						<div class="deliverables-list">
                         <div class="service-area">
                             <div class="service-title">Control Implementation</div>
                             <div class="deliverable">
@@ -327,10 +351,12 @@
                         </div>
                     </div>
                 </div>
+			</div>	
                 
                 <div class="pillar">
                     <div class="pillar-header">Measure</div>
                     <div class="service-area-grid">
+						<div class="deliverables-list">					
                         <div class="service-area">
                             <div class="service-title">Key Performance Indicators (KPIs) & Key Risk Indicators (KRIs)</div>
                             <div class="deliverable">
@@ -373,10 +399,12 @@
                         </div>
                     </div>
                 </div>
+			</div>	
 
                 <div class="pillar">
                     <div class="pillar-header">Train</div>
                     <div class="service-area-grid">
+						<div class="deliverables-list">
                         <div class="service-area">
                             <div class="service-title">Security Culture Assessment</div>
                             <div class="deliverable">
@@ -407,7 +435,7 @@
                                 <img src="https://cdn-icons-png.flaticon.com/512/3135/3135731.png" alt="Phishing Icon">
                                 <div class="deliverable-text">
                                     <h4>Phishing Simulation & Social Engineering Testing</h4>
-                                    <p>Conduct simulated phishing campaigns and social engineering tests to assess employee's awareness & susceptibility. Aditionally, provide training to re-inforce vigilance.<br><strong>Pricing:</strong> Base price: ₹ 1,00,000</p>
+                                    <p>Conduct simulated phishing campaigns and social engineering tests to assess employee's awareness & susceptibility. Additionally, provide training to re-enforce vigilance.<br><strong>Pricing:</strong> Base price: ₹ 1,00,000</p>
                                 </div>
                             </div>
                             <div class="deliverable">
@@ -420,10 +448,12 @@
                         </div>
                     </div>
                 </div>
+			</div>	
 
                 <div class="pillar">
                     <div class="pillar-header">Test</div>
                     <div class="service-area-grid">
+						<div class="deliverables-list">					
                         <div class="service-area">
                             <div class="service-title">Three Lines of Defense</div>
                             <div class="deliverable">
@@ -474,14 +504,17 @@
                     </div>
                 </div>
             </div>
+		</div>	
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; <span id="year"></span> VnV Cybersecurity. All rights reserved.</p>
+
+    <footer class="site-footer-bottom">
+		<div class="footer-copy">
+        <p>&copy; <span id="year"></span> VnV Cybersecurity. All rights reserved.</p>
         </div>
     </footer>
+
 
     <button id="back-to-top" class="back-to-top" title="Go to top">↑</button>
 
