@@ -346,3 +346,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Search functionality for the concepts section
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('concept-search');
+    const cards = document.querySelectorAll('.iam-cards');
+    const navLinks = document.querySelectorAll('.concepts-nav ul li');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim().toLowerCase();
+
+            // 1. Filter the concept cards
+            cards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                const isMatch = cardText.includes(query);
+                card.hidden = !isMatch;
+            });
+
+            // 2. Filter the navigation links
+            navLinks.forEach(linkListItem => {
+                const link = linkListItem.querySelector('a');
+                const targetId = link.getAttribute('href').substring(1);
+                const targetCard = document.getElementById(targetId);
+
+                // Hide the nav item if its corresponding card is hidden
+                if (targetCard) {
+                    linkListItem.style.display = targetCard.hidden ? 'none' : '';
+                }
+            });
+        });
+    }
+});

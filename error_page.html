@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops! Page Not Found</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+			font-family: 'Roboto', sans-serif;
+            background-color: #f1f1f1;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+        }
+        #counter {
+            font-size: 12rem;
+            font-weight: bold;
+            color: #ff6347;
+            line-height: 1;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5em;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Oops! Something went wrong.</h1>
+        <div id="counter">10</div>
+        <p>We'll redirect you to our homepage shortly. If you've found an error on our website, please write us an email with details of how you got to this page.</p>
+    </div>
+
+    <script>
+        (function() {
+            let secondsLeft = 10;
+            const redirectURL = "index.html"; 
+
+            const counterElement = document.getElementById('counter');
+            counterElement.textContent = secondsLeft;
+
+            const countdown = setInterval(function() {
+                secondsLeft--;
+                counterElement.textContent = secondsLeft;
+
+                if (secondsLeft <= 0) {
+                    clearInterval(countdown);
+                    window.location.href = redirectURL;
+                }
+            }, 1000);
+        })();
+    </script>
+
+</body>
+</html>
