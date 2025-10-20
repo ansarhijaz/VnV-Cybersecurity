@@ -1,3 +1,5 @@
+	const formLoadTime = Date.now();
+
     // --- Smooth Scrolling for Anchor Links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -101,6 +103,322 @@ backToTopButton.addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
+
+
+// --- Contact Form Logic ---
+
+// Add this CSS to hide the honeypot field.
+const honeypotStyles = document.createElement('style');
+honeypotStyles.innerHTML = `.required-frm-field { display: none; }`;
+document.head.appendChild(honeypotStyles);
+
+const contactForm = document.getElementById('contact-form');
+const planSelect = document.getElementById('plan');
+const servicesWrapper = document.getElementById('services-wrapper');
+const servicesContainer = document.getElementById('services-container');
+
+// Logic for dynamic service fields based on plan selection
+if (planSelect && servicesWrapper && servicesContainer) {
+    const servicesData = {
+        "Governance services": ["Cybersecurity Strategy services", "Legal & Regulatory Compliance services", "Policies, Standards, and Procedures services", "Risk & Control Management services"],
+        "Implementation services": ["Control Automation/ Application Advisory services", "Control Implementation services"],
+        "Measurement services": ["Benchmarking services", "Key Performance Indicators (KPIs) & Key Risk Indicators (KRIs) services", "Maturity Model Assessment services", "Reporting & Dashboards services"],
+        "Testing services": ["Audit/ Independent Assessment services", "External Audits & Certifications services", "Penetration Testing & Red Teaming services", "Three Lines of Defense services"],
+        "Training services": ["Security Awareness & Training Strategy services", "Security Culture Assessment services"]
+    };
+
+    const populateServicesList = () => {
+        servicesContainer.innerHTML = ''; // Clear previous content
+        let allServicesHtml = '';
+        for (const group in servicesData) {
+            allServicesHtml += `<div class="checkbox-group-header">${group}</div>`;
+            servicesData[group].forEach(service => {
+                const serviceId = `service-${service.replace(/[\s&/]+/g, '-')}`;
+                allServicesHtml += `
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="${serviceId}" name="services" value="${service}" class="service-checkbox">
+                        <label for="${serviceId}">${service}</label>
+                    </div>`;
+            });
+        }
+        servicesContainer.innerHTML = allServicesHtml;
+    };
+
+    planSelect.addEventListener('change', () => {
+        if (planSelect.value === 'A la carte') {
+            populateServicesList();
+            servicesWrapper.style.display = 'block';
+        } else {
+            servicesWrapper.style.display = 'none';
+            servicesContainer.innerHTML = '';
+        }
+    });
+}
+
+
+// Form submission rate limiting
+const SUBMISSION_LIMIT = 5;
+const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour in milliseconds
+
+function getSubmissionCount() {
+    const submissions = JSON.parse(sessionStorage.getItem('formSubmissions') || '[]');
+    const now = Date.now();
+    // Filter submissions within the last hour
+    const recentSubmissions = submissions.filter(time => now - time < RATE_LIMIT_WINDOW);
+    sessionStorage.setItem('formSubmissions', JSON.stringify(recentSubmissions));
+    return recentSubmissions.length;
+}
+
+function recordSubmission() {
+    const submissions = JSON.parse(sessionStorage.getItem('formSubmissions') || '[]');
+    submissions.push(Date.now());
+    sessionStorage.setItem('formSubmissions', JSON.stringify(submissions));
+}
+
+// Validation functions
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function validatePhone(phone) {
+    // Accepts various phone formats: (123) 456-7890, 123-456-7890, 1234567890, +91 1234567890, etc.
+    const phoneRegex = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,5}[-\s\.]?[0-9]{1,6}$/;
+    return phoneRegex.test(phone.replace(/\s/g, ''));
+}
+
+function validateName(name) {
+    return name.trim().length >= 4;
+}
+
+function showError(fieldId, message) {
+    const errorElement = document.getElementById(`${fieldId}-error`);
+    if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+    }
+}
+
+function clearError(fieldId) {
+    const errorElement = document.getElementById(`${fieldId}-error`);
+    if (errorElement) {
+        errorElement.textContent = '';
+        errorElement.style.display = 'none';
+    }
+}
+
+// Get device type
+function getDeviceType() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(userAgent)) {
+        return 'Tablet';
+    }
+    if (/mobile|iphone|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+        return 'Mobile';
+    }
+    return 'Desktop';
+}
+
+// Get approximate geolocation (country/region)
+async function getGeoLocation() {
+    try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        return `${data.city}, ${data.region}, ${data.country_name}`;
+    } catch (error) {
+        console.error('Geolocation error:', error);
+        return 'Unknown';
+    }
+}
+
+	// Contact form submission handler
+	if (contactForm) {
+		// Real-time validation
+		const nameField = document.getElementById('name');
+		const emailField = document.getElementById('email');
+		const phoneField = document.getElementById('phone');
+		const consentCheckbox = document.getElementById('consent_marketing');
+
+		if (nameField) {
+			nameField.addEventListener('blur', () => {
+				if (!validateName(nameField.value)) {
+					showError('name', 'Please enter a valid name');
+				} else {
+					clearError('name');
+				}
+			});
+		}
+
+		if (emailField) {
+			emailField.addEventListener('blur', () => {
+				if (!validateEmail(emailField.value)) {
+					showError('email', 'Please enter a valid email address');
+				} else {
+					clearError('email');
+				}
+			});
+		}
+
+		if (phoneField) {
+			phoneField.addEventListener('blur', () => {
+				if (!validatePhone(phoneField.value)) {
+					showError('phone', 'Please enter a valid phone number');
+				} else {
+					clearError('phone');
+				}
+			});
+		}
+
+		contactForm.addEventListener('submit', async (e) => {
+			e.preventDefault();
+
+			// Clear all previous errors
+			['name', 'email', 'phone', 'consent'].forEach(field => clearError(field));
+
+			// Check rate limiting
+			if (getSubmissionCount() >= SUBMISSION_LIMIT) {
+				document.getElementById('form-status').innerHTML = 
+					'<p style="color: #e74c3c; margin-top: 1rem;">You have reached the submission limit. Please try again later.</p>';
+				return;
+			}
+
+			// Get form values
+			const name = document.getElementById('name').value.trim();
+			const email = document.getElementById('email').value.trim();
+			const phone = document.getElementById('phone').value.trim();
+			const plan = document.getElementById('plan').value;
+			const message = document.getElementById('message').value.trim();
+			const comments = document.getElementById('comments').value; // Honeypot
+			const consentMarketing = document.getElementById('consent_marketing').checked;
+
+			// Honeypot check - if filled, it's a bot
+			if (comments) {
+				console.log('Bot detected via honeypot');
+				window.location.reload();
+				return;
+			}
+
+			// Validate mandatory fields
+			let hasError = false;
+
+			if (!validateName(name)) {
+				showError('name', 'Please enter a valid name');
+				hasError = true;
+			}
+
+			if (!validateEmail(email)) {
+				showError('email', 'Please enter a valid email address');
+				hasError = true;
+			}
+
+			if (!validatePhone(phone)) {
+				showError('phone', 'Please enter a valid phone number');
+				hasError = true;
+			}
+
+			if (!plan) {
+				document.getElementById('form-status').innerHTML = 
+					'<p style="color: #e74c3c; margin-top: 1rem;">Please select a plan</p>';
+				hasError = true;
+			}
+
+			if (!consentMarketing) {
+				showError('consent', 'You must agree to the terms and consent to marketing communications');
+				hasError = true;
+			}
+
+			if (hasError) {
+				return;
+			}
+
+			// Get selected services (if any)
+			const selectedServices = [];
+			if (plan === 'A la carte') {
+				document.querySelectorAll('.service-checkbox:checked').forEach(checkbox => {
+					selectedServices.push(checkbox.value);
+				});
+			}
+
+			// Get hidden field values
+			const geoLocation = await getGeoLocation();
+			const deviceType = getDeviceType();
+			const submitTime = Math.floor((Date.now() - formLoadTime) / 1000); // Time in seconds
+			const referrerUrl = document.referrer || 'Direct';
+
+			// Check Turnstile captcha
+			const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]');
+			const captchaPass = turnstileResponse && turnstileResponse.value ? 'Yes' : 'No';
+
+			// Prepare form data
+			const formData = {
+				timestamp: new Date().toISOString(),
+				submission_id: `SUB-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+				form_version: '1.0',
+				source_page: window.location.href,
+				name: name,
+				email: email,
+				phone: phone,
+				plan: plan,
+				services: selectedServices.join(', '),
+				message: message,
+				comments: '', // Always empty for legitimate users
+				consent_marketing: consentMarketing ? 'Yes' : 'No',
+				referrer_url: referrerUrl,
+				geo_location: geoLocation,
+				device_type: deviceType,
+				submit_time: submitTime,
+				captcha_pass: captchaPass
+			};
+
+			// Show loading state
+			const submitButton = contactForm.querySelector('button[type="submit"]');
+			const originalButtonText = submitButton.textContent;
+			submitButton.textContent = 'Sending...';
+			submitButton.disabled = true;
+
+			try {
+				// Google Apps Script web app URL
+				const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5ILur1CziDLJfXEAQc8114K7d_Ap5S2DVGy6bFd6GdYgrvNf7Rs0yJq_qzRMeGlRFCg/exec';
+				
+				// Convert formData to URL parameters for better compatibility
+				const params = new URLSearchParams();
+				for (const key in formData) {
+					params.append(key, formData[key]);
+				}
+				
+				const response = await fetch(SCRIPT_URL + '?' + params.toString(), {
+					method: 'POST',
+					redirect: 'follow'
+				});
+
+				// Record successful submission
+				recordSubmission();
+
+				// Show success message
+				document.getElementById('form-status').innerHTML = 
+					'<p style="color: #27ae60; margin-top: 1rem; font-weight: 500;">✓ Thank you! Your message has been sent successfully. We\'ll get back to you soon.</p>';
+				
+				// Reset form
+				contactForm.reset();
+				
+				// Hide services wrapper if visible
+				if (servicesWrapper) {
+					servicesWrapper.style.display = 'none';
+				}
+
+			} catch (error) {
+				console.error('Form submission error:', error);
+				document.getElementById('form-status').innerHTML = 
+					'<p style="color: #e74c3c; margin-top: 1rem;">An error occurred. Please try again later or contact us directly on phone.</p>';
+			} finally {
+				// Restore button state
+				submitButton.textContent = originalButtonText;
+				submitButton.disabled = false;
+			}
+		});
+	}
+
+
 
 // Accordion functionality for the concepts section
 document.querySelectorAll('.iam-card-header').forEach(header => {
@@ -206,6 +524,21 @@ const tipCloseBtn = document.querySelector('.tip-close-btn');
 const securityTipWidget = document.querySelector('.security-tip-widget');
 const reactionBtns = document.querySelectorAll('.tip-reaction');
 
+    // --- Security Tip Widget ---
+    const tipToggleButton = document.getElementById('tip-toggle-btn');
+    const tipContentBox = document.getElementById('tip-content-box');
+    const tipCloseButton = document.querySelector('.tip-close-btn');
+    if (tipToggleButton && tipContentBox && tipCloseButton) {
+        tipToggleButton.addEventListener('click', () => tipContentBox.classList.toggle('show'));
+        tipCloseButton.addEventListener('click', () => tipContentBox.classList.remove('show'));
+        document.addEventListener('click', (event) => {
+            if (!tipContentBox.contains(event.target) && !tipToggleButton.contains(event.target)) {
+                tipContentBox.classList.remove('show');
+            }
+        });
+    }
+
+
 // Function to get a tip for the day
 function getTipOfTheDay() {
     const today = new Date().toDateString();
@@ -232,31 +565,9 @@ function updateReactionCounts() {
     document.querySelector('[data-reaction="like"]').innerHTML = `<i class="fas fa-thumbs-up"></i> <span class="reaction-count">${reactions.like}</span>`;
 }
 
-
-// Function to open the tip box
-function openTipBox() {
-    securityTipWidget.classList.add('expanded');
-    tipToggleBtn.style.display = 'none'; // Hide the button when expanded
-}
-
-// Function to close the tip box
-function closeTipBox() {
-    securityTipWidget.classList.remove('expanded');
-    tipToggleBtn.style.display = 'flex'; // Show the button when collapsed
-}
-
-// Event listeners
-if (tipToggleBtn) {
-    tipToggleBtn.addEventListener('click', openTipBox);
-}
-
-if (tipCloseBtn) {
-    tipCloseBtn.addEventListener('click', closeTipBox);
-}
-
 reactionBtns.forEach(reactionBtn => {
     reactionBtn.addEventListener('click', () => {
-        let reactions = JSON.parse(localStorage.getItem('tipReactions')) || { like: 0, dislike: 0 };
+        let reactions = JSON.parse(localStorage.getItem('tipReactions')) || { like: 0};
         const reactionType = reactionBtn.getAttribute('data-reaction');
         reactions[reactionType] += 1;
         localStorage.setItem('tipReactions', JSON.stringify(reactions));
@@ -317,8 +628,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// New Feature Elaboration Toggle functionality (non-intrusive details)
-document.addEventListener('DOMContentLoaded', () => {
+	// Feature Elaboration Toggle functionality (non-intrusive details)
+	document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.feature-has-detail').forEach(listItem => {
         // Elements to interact with
         const mainLine = listItem.querySelector('.feature-main-line');
@@ -347,34 +658,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Search functionality for the concepts section
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('concept-search');
-    const cards = document.querySelectorAll('.iam-cards');
-    const navLinks = document.querySelectorAll('.concepts-nav ul li');
-
-    if (searchInput) {
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value.trim().toLowerCase();
-
-            // 1. Filter the concept cards
-            cards.forEach(card => {
-                const cardText = card.textContent.toLowerCase();
-                const isMatch = cardText.includes(query);
-                card.hidden = !isMatch;
-            });
-
-            // 2. Filter the navigation links
-            navLinks.forEach(linkListItem => {
-                const link = linkListItem.querySelector('a');
-                const targetId = link.getAttribute('href').substring(1);
-                const targetCard = document.getElementById(targetId);
-
-                // Hide the nav item if its corresponding card is hidden
-                if (targetCard) {
-                    linkListItem.style.display = targetCard.hidden ? 'none' : '';
-                }
-            });
-        });
-    }
-});
